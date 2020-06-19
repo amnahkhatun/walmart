@@ -1,6 +1,10 @@
 .details-main-div {
   padding: 2%;
 }
-.details-main-div {
-  padding: 2%;
+
+.short-desc {
+  white-space: nowrap;
+  /* width: 50px; */
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

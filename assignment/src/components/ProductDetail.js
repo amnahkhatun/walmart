@@ -5,7 +5,22 @@ import { fetchProduct } from "../actions";
 import "./styles.css";
 
 class ProductDetail extends React.Component {
+  componentDidMount() {
+    let productId = this.props.match.params.productId;
+    console.log(productId, "productId on page loaded");
+    this.props.fetchProduct(productId);
+    console.log(this.props, "fetchProduct() called");
+  }
+
   render() {
+    console.log(this.props.product.shortDescription, "product in render");
+    const {
+      shortDescription,
+      price,
+      reviewRating,
+      reviewCount,
+      productName
+    } = this.props.product;
     return (
       <div className="details-main-div">
         <div className="">
@@ -16,12 +31,12 @@ class ProductDetail extends React.Component {
             src={this.props.product.productImage}
           />
           <div className="">
-            <a className="header">{this.props.product.productName}</a>
+            <a className="header">{productName}</a>
             <ul>
-              <li>{this.props.product.shortDescription}</li>
-              <li>{this.props.product.price}</li>
-              <li>{this.props.product.reviewRating}</li>
-              <li>{this.props.product.reviewCount}</li>
+              <li>{shortDescription}</li>
+              <li>{price}</li>
+              <li>{reviewRating}</li>
+              <li>{reviewCount}</li>
             </ul>
           </div>
           <button
@@ -37,9 +52,8 @@ class ProductDetail extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let pId = ownProps.match.params.productId;
-  let productResponse = state.productResponse;
-  let product = productResponse[pId];
+  let product = state.productResponse;
+  console.log(product, "product in detail");
   return {
     product
   };

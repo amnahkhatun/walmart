@@ -40,7 +40,7 @@ export default function RecipeReviewCard(props) {
   };
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} style={{ height: "30rem" }}>
       <CardHeader
         avatar={
           <Avatar aria-label="recipe" className={classes.avatar}>
@@ -57,7 +57,7 @@ export default function RecipeReviewCard(props) {
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
-          {props.shortDescription}
+          <div className="short-desc">{props.shortDescription}</div>
         </Typography>
       </CardContent>
       <CardContent>
