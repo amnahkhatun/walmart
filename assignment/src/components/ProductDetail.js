@@ -5,12 +5,12 @@ import { fetchProduct } from "../actions";
 import "./styles.css";
 
 class ProductDetail extends React.Component {
-  componentDidMount() {
-    let productId = this.props.match.params.productId;
-    console.log(productId, "productId on page loaded");
-    this.props.fetchProduct(productId);
-    console.log(this.props, "fetchProduct() called");
-  }
+  // componentDidMount() {
+  //   let productId = this.props.match.params.productId;
+  //   console.log(productId, "productId on page loaded");
+  //   this.props.fetchProduct(productId);
+  //   console.log(this.props, "fetchProduct() called");
+  // }
 
   render() {
     console.log(this.props.product.shortDescription, "product in render");
@@ -52,7 +52,9 @@ class ProductDetail extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  let product = state.productResponse;
+  let pId = ownProps.match.params.productId;
+  let productResponse = state.productResponse;
+  let product = productResponse[pId];
   console.log(product, "product in detail");
   return {
     product
