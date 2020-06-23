@@ -6,11 +6,16 @@ import { fetchProducts } from "../actions";
 import ProductCard from "./ProductCard";
 import Loading from "./Loading";
 import Pagination from "./Pagination";
+import SearchComponent from "./SearchComponent";
 
 class ProductList extends React.Component {
   componentDidMount() {
     this.props.fetchProducts();
   }
+
+  // helperFunction = data => {
+  //   console.log(data, "data");
+  // };
 
   render() {
     if (this.props.walmartProduct.length < 1) {
@@ -36,6 +41,12 @@ class ProductList extends React.Component {
 
     return (
       <div className="details-main-div">
+        <div className="search-bar-div">
+          <SearchComponent
+          // helperFunction={this.helperFunction}
+          />
+        </div>
+
         <div className="ui relaxed four column grid">
           <div className="row">{renderList}</div>
         </div>
@@ -47,9 +58,13 @@ class ProductList extends React.Component {
   }
 }
 const mapStateToProps = state => {
+  // console.log(state, "state in list");
   let walmartProduct = state.productResponse;
-  console.log(walmartProduct, "walmartProduct");
+  // let walmartProduct = state.productResponse.filteredData;
+  // console.log(state.productResponse.filteredData, "filteredData");
   walmartProduct = Object.values(walmartProduct);
   return { walmartProduct };
 };
-export default connect(mapStateToProps, { fetchProducts })(ProductList);
+export default connect(mapStateToProps, {
+  fetchProducts
+})(ProductList);

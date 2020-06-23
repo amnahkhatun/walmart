@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
 function BasicPagination(props) {
   const classes = useStyles();
   function getSelectedPage(pageNumber) {
-    console.log(pageNumber, "pageNumber");
+    // console.log(pageNumber, "pageNumber");
     props.fetchProducts(pageNumber);
   }
   return (

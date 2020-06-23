@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -7,6 +7,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import { red } from "@material-ui/core/colors";
+import MoreVertIcon from "@material-ui/icons/MoreVert";
+import TextField from "@material-ui/core/TextField";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -34,11 +36,16 @@ const useStyles = makeStyles(theme => ({
 export default function RecipeReviewCard(props) {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
+  const [editValue, setEditValue] = useState(true);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  const handleEdit = e => {
+    e.preventDefault();
+    setEditValue(!editValue);
+    // console.log("editValue", editValue);
+  };
   return (
     <Card className={classes.root} style={{ height: "30rem" }}>
       <CardHeader
@@ -47,6 +54,7 @@ export default function RecipeReviewCard(props) {
             R
           </Avatar>
         }
+        action={<MoreVertIcon onClick={e => handleEdit(e)} />}
         title={props.productName}
         subheader="September 14, 2016"
       />
@@ -55,10 +63,20 @@ export default function RecipeReviewCard(props) {
         image={props.productImage}
         title="image"
       />
+
       <CardContent>
-        <Typography variant="body2" color="textSecondary" component="p">
-          <div className="short-desc">{props.shortDescription}</div>
-        </Typography>
+        {editValue ? (
+          <Typography variant="body2" color="textSecondary" component="p">
+            <div className="short-desc">{props.shortDescription}</div>
+          </Typography>
+        ) : (
+          <TextField
+            style={{ width: "100%" }}
+            id="outlined-basic"
+            variant="outlined"
+            value={props.shortDescription}
+          />
+        )}
       </CardContent>
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="h2">
