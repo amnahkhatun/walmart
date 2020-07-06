@@ -23,7 +23,11 @@ class ProductList extends React.Component {
     }
     const renderList = this.props.walmartProduct.map(walmartProduct => {
       return (
-        <div className="column" style={{ paddingBottom: "4rem" }}>
+        <div
+          className="column"
+          style={{ paddingBottom: "4rem" }}
+          key={walmartProduct.productId}
+        >
           <Link to={`products/detail/${walmartProduct.productId}`}>
             <ProductCard
               productName={walmartProduct.productName}

@@ -1,0 +1,26 @@
+@media all and (min-width: 480px) {
+  .Login {
+    padding: 60px 0;
+  }
+
+  .Login form {
+    margin: 0 auto;
+    max-width: 320px;
+  }
+}
+
+.input-box {
+  /* background-color: red; */
+  width: 100%;
+  padding: 3%;
+}
+.login-button {
+  margin-top: 2%;
+  background-color: #3f51b5;
+  padding: 3%;
+  color: white;
+}
+.main-div {
+  background-color: aliceblue;
+  height: 57rem;
+}

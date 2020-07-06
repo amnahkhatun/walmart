@@ -7,7 +7,7 @@ export default function Loading() {
     <Grid container wrap="nowrap">
       {[1, 2, 3, 4].map((item, index) => {
         return (
-          <Grid conatiner item xs={3} direction="column">
+          <Grid conatiner item xs={3} direction="column" key={item}>
             {" "}
             <Skeleton variant="text" width={210} height={58} />
             <Skeleton variant="circle" width={40} height={40} />
