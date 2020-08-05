@@ -16,4 +16,7 @@ describe("Login Component", () => {
   it("renders a email input", () => {
     expect(shallow(<Login />).find("#email").length).toEqual(1);
   });
+  it("renders a email input", () => {
+    expect(shallow(<Login />).find("#password").length).toEqual(1);
+  });
 });
